@@ -15,10 +15,6 @@ public class ProductRepo {
         return productList;
     }
 
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -48,9 +44,9 @@ public class ProductRepo {
         return this;
     }
 
-    public Product getProductById(String id) {
+    public Product getProductById(String productId) {
         for (Product product : productList) {
-            if (product.id().equals(id)) {
+            if (product.productId().equals(productId)) {
                 return product;
             }
         }
