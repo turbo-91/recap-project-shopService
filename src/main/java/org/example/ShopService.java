@@ -5,11 +5,11 @@ import java.util.List;
 
 public class ShopService {
     private final ProductRepo productRepo;
-    private final OrderListRepo orderListRepo;
+    private final OrderRepo orderRepo;
 
-    public ShopService(ProductRepo productRepo, OrderListRepo orderListRepo) {
+    public ShopService(ProductRepo productRepo, OrderRepo orderRepo) {
         this.productRepo = productRepo;
-        this.orderListRepo = orderListRepo;
+        this.orderRepo = orderRepo;
     }
 
     public boolean placeOrder(String orderId, List<String> productIds) {
@@ -26,7 +26,7 @@ public class ShopService {
 
         Order newOrder = new Order(orderId, orderedProducts);
 
-        orderListRepo.addOrder(newOrder);
+        orderRepo.addOrder(newOrder);
         System.out.println("Order placed successfully: " + newOrder);
         return true;
     }
