@@ -2,10 +2,14 @@ package org.example;
 
 import java.math.BigDecimal;
 import java.util.List;
-public record Order(String orderId, List<OrderItem> items, BigDecimal totalPrice) {
+public record Order(String orderId, List<OrderItem> items, BigDecimal totalPrice, orderStatus status) {
+
+    public enum orderStatus {
+    PROCESSING, IN_DELIVERY, COMPLETED
+    }
 
     public Order(String orderId, List<OrderItem> items) {
-        this(orderId, items, calculateTotalPrice(items));
+        this(orderId, items, calculateTotalPrice(items), orderStatus.PROCESSING);
     }
 
     private static BigDecimal calculateTotalPrice(List<OrderItem> items) {
@@ -17,11 +21,11 @@ public record Order(String orderId, List<OrderItem> items, BigDecimal totalPrice
     }
 
     public Order withOrderId(String orderId) {
-        return new Order(orderId, items, totalPrice);
+        return new Order(orderId, items, totalPrice, status);
     }
 
     public Order withItems(List<OrderItem> items) {
-        return new Order(orderId, items, calculateTotalPrice(items));
+        return new Order(orderId, items, calculateTotalPrice(items), status);
     }
 
     @Override
