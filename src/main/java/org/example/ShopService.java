@@ -12,22 +12,16 @@ public class ShopService {
         this.orderRepo = orderRepo;
     }
 
-    public boolean placeOrder(String orderId, List<String> productIds, List<Integer> quantities) {
+    public boolean placeOrder(String orderId, List<String> productIds, List<Integer> quantities) throws ProductNotFoundException {
         List<OrderItem> orderItems = new ArrayList<>();
 
         for (int i = 0; i < productIds.size(); i++) {
             String productId = productIds.get(i);
             int quantity = quantities.get(i);
-
-            Product product = productRepo.getProductById(productId);
-            if (product == null) {
-                System.out.println("Product with ID " + productId + " does not exist.");
-                return false;
-            }
-
+            Product product = productRepo.getProductById(productId)
+                    .orElseThrow(() -> new ProductNotFoundException("Product with ID " + productId + " does not exist."));
             orderItems.add(new OrderItem(product, quantity));
         }
-
         Order newOrder = new Order(orderId, orderItems);
         orderRepo.addOrder(newOrder);
         System.out.println("Order placed successfully.");
