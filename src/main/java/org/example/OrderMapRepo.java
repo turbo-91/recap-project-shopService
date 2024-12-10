@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,24 +8,24 @@ import java.util.Map;
 public class OrderMapRepo implements OrderRepo{
 Map<String, Order> orders = new HashMap<>();
 
-
     @Override
     public List<Order> getOrders() {
-        return List.of();
+        return new ArrayList<>(orders.values());
     }
 
     @Override
     public Order getOrderById(String orderId) {
-        return null;
+        return orders.get(orderId);
     }
 
     @Override
     public Order addOrder(Order order) {
-        return null;
+        orders.put(order.orderId(), order);
+        return order;
     }
 
     @Override
     public Order removeOrder(Order order) {
-        return null;
+        return orders.remove(order.orderId());
     }
 }
