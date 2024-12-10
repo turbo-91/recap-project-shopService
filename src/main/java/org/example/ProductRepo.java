@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ProductRepo {
     List<Product> products = new ArrayList<>();
@@ -14,12 +15,12 @@ public class ProductRepo {
         return products;
     }
 
-    public Product getProductById(String productId) {
+    public Optional<Product> getProductById(String productId) {
         for (Product product : products) {
             if (product.productId().equals(productId))
-                return product;
+                return Optional.of(product);
         }
-        return null;
+        return Optional.empty();
     }
 
     public ProductRepo addProduct(Product product) {
