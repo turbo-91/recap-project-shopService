@@ -1,7 +1,11 @@
 package org.example;
 
+import lombok.With;
+
 import java.math.BigDecimal;
 import java.util.List;
+
+@With
 public record Order(String orderId, List<OrderItem> items, BigDecimal totalPrice, orderStatus status) {
 
     public enum orderStatus {
@@ -18,14 +22,6 @@ public record Order(String orderId, List<OrderItem> items, BigDecimal totalPrice
             total = total.add(item.getItemTotalPrice());
         }
         return total;
-    }
-
-    public Order withOrderId(String orderId) {
-        return new Order(orderId, items, totalPrice, status);
-    }
-
-    public Order withItems(List<OrderItem> items) {
-        return new Order(orderId, items, calculateTotalPrice(items), status);
     }
 
     @Override
@@ -56,4 +52,7 @@ public record Order(String orderId, List<OrderItem> items, BigDecimal totalPrice
     public orderStatus status() {
         return status;
     }
+
+
+
 }
