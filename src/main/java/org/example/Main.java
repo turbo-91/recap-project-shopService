@@ -16,7 +16,7 @@ public class Main {
         Product sneakers = Product.builder()
                 .productId("sn12")
                 .name("Sneakers")
-                .price(BigDecimal.ONE)
+                .price(BigDecimal.TEN)
                 .build();
 
         Product mobilePhone =Product.builder()
@@ -28,7 +28,7 @@ public class Main {
         Product plant = Product.builder()
                 .productId("pl12")
                 .name("Monstera")
-                .price(BigDecimal.TWO).
+                .price(BigDecimal.TEN).
                 build();
 
         productRepo1.addProduct(sneakers)
@@ -47,7 +47,7 @@ public class Main {
 
         OrderItem item3 = OrderItem.builder()
                 .product(mobilePhone)
-                .quantity(10)
+                .quantity(7)
                 .build();
 
         List<OrderItem> items1 = new ArrayList<>();
@@ -57,10 +57,28 @@ public class Main {
         items2.add(item3);
         items2.add(item1);
         List<OrderItem> items3 = new ArrayList<>();
-        items2.add(item3);
-        items2.add(item2);
+        items3.add(item2);
+        items3.add(item2);
 
         Order order1 = new Order("oId1", items1);
+        Order order2 = new Order("oId2", items2);
+        Order order3 = new Order("oId3", items3);
+
+        System.out.println("----------------------------------");
+        System.out.println("Orders:");
+        System.out.println(order1);
+        System.out.println(order2);
+        System.out.println(order3);
+
+        testOrderMapRepo.addOrder(order1);
+        testOrderMapRepo.addOrder(order2);
+        testOrderMapRepo.addOrder(order3);
+
+        System.out.println("----------------------------------");
+        System.out.println("testOrderMapRepo:");
+        System.out.println(order1);
+
+
 
 
 
