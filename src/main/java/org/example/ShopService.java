@@ -34,6 +34,12 @@ public class ShopService {
         return true;
     }
 
+    public List<Order> getOrdersByOrderStatus(Order.orderStatus status) {
+        return orderRepo.getOrders().stream()
+                .filter(order -> order.status() == status)
+                .toList();
+    }
+
     public boolean updateOrderQuantity(String orderId, String productId, int newQuantity) {
         Order order = orderRepo.getOrderById(orderId);
         if (order == null) {

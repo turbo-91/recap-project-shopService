@@ -36,4 +36,24 @@ public record Order(String orderId, List<OrderItem> items, BigDecimal totalPrice
                 ", totalPrice=" + totalPrice +
                 '}';
     }
+
+    @Override
+    public String orderId() {
+        return orderId;
+    }
+
+    @Override
+    public List<OrderItem> items() {
+        return items;
+    }
+
+    @Override
+    public BigDecimal totalPrice() {
+        return totalPrice;
+    }
+
+    @Override
+    public orderStatus status() {
+        return status;
+    }
 }
