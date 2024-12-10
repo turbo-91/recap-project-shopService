@@ -35,6 +35,33 @@ public class Main {
                 .addProduct(mobilePhone)
                 .addProduct(plant);
 
+        OrderItem item1 = OrderItem.builder()
+                .product(sneakers)
+                .quantity(2)
+                .build();
+
+        OrderItem item2 = OrderItem.builder()
+                .product(plant)
+                .quantity(1)
+                .build();
+
+        OrderItem item3 = OrderItem.builder()
+                .product(mobilePhone)
+                .quantity(10)
+                .build();
+
+        List<OrderItem> items1 = new ArrayList<>();
+        items1.add(item1);
+        items1.add(item2);
+        List<OrderItem> items2 = new ArrayList<>();
+        items2.add(item3);
+        items2.add(item1);
+        List<OrderItem> items3 = new ArrayList<>();
+        items2.add(item3);
+        items2.add(item2);
+
+        Order order1 = new Order("oId1", items1);
+
 
 
 //        OrderItem item1 = new OrderItem(sneakers, 2);

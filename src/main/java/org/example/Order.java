@@ -8,7 +8,6 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 @With
-@Builder
 public record Order
         (String orderId,
          List<OrderItem> items,
