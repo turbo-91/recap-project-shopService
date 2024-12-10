@@ -11,9 +11,23 @@ public class Main {
     public static void main(String[] args) {
         ProductRepo productRepo1 = new ProductRepo(new ArrayList<>());
 
-        Product sneakers = new Product("sn12", "Sneakers", BigDecimal.ONE);
-        Product mobilePhone = new Product("mob34", "Mobile", BigDecimal.TEN);
-        Product plant = new Product("pl12", "Monstera", BigDecimal.TWO);
+        Product sneakers = Product.builder()
+                .productId("sn12")
+                .name("Sneakers")
+                .price(BigDecimal.ONE)
+                .build();
+
+        Product mobilePhone =Product.builder()
+                .productId("mob34")
+                .name("Mobile")
+                .price(BigDecimal.TEN)
+                .build();
+
+        Product plant = Product.builder()
+                .productId("pl12")
+                .name("Monstera")
+                .price(BigDecimal.TWO).
+                build();
 
         productRepo1.addProduct(sneakers)
                 .addProduct(mobilePhone)

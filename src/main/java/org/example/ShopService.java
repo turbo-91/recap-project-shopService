@@ -1,16 +1,15 @@
 package org.example;
 
+import lombok.RequiredArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@RequiredArgsConstructor
 public class ShopService {
     private final ProductRepo productRepo;
     private final OrderRepo orderRepo;
 
-    public ShopService(ProductRepo productRepo, OrderRepo orderRepo) {
-        this.productRepo = productRepo;
-        this.orderRepo = orderRepo;
-    }
 
     public Order updateOrder(Order order, Order.orderStatus status) {
         Order updatedOrder = order.withStatus(status);
