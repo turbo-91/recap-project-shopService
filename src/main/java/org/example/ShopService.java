@@ -12,6 +12,11 @@ public class ShopService {
         this.orderRepo = orderRepo;
     }
 
+    public Order updateOrder(Order order, Order.orderStatus status) {
+        Order updatedOrder = order.withStatus(status);
+        return updatedOrder;
+    }
+
     public boolean placeOrder(String orderId, List<String> productIds, List<Integer> quantities) throws ProductNotFoundException {
         List<OrderItem> orderItems = new ArrayList<>();
 
