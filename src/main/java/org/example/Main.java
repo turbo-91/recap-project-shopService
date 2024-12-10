@@ -1,8 +1,10 @@
 package org.example;
 
 import java.math.BigDecimal;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class Main {
@@ -21,7 +23,7 @@ public class Main {
         System.out.println(productRepo.getProducts());
 
         String searchId = "mob34";
-        Product foundProduct = productRepo.getProductById(searchId);
+        Optional<Product> foundProduct = productRepo.getProductById(searchId);
         System.out.println("productwithId mob34" + foundProduct);
 
         ProductRepo productRepo1 = new ProductRepo(new ArrayList<>());
@@ -53,8 +55,8 @@ public class Main {
         items2.add(item1);
 
 
-        Order order1 =  new Order("14324", items1, BigDecimal.ZERO, Order.orderStatus.PROCESSING);
-        Order order2 =  new Order("14adsfg4", items2, BigDecimal.ZERO, Order.orderStatus.COMPLETED);
+        Order order1 =  new Order("14324", items1, BigDecimal.ZERO, Order.orderStatus.PROCESSING, ZonedDateTime.now());
+        Order order2 =  new Order("14adsfg4", items2, BigDecimal.ZERO, Order.orderStatus.COMPLETED, ZonedDateTime.now());
         testOrderMapRepo.addOrder(order1);
         testOrderMapRepo.addOrder(order2);
 

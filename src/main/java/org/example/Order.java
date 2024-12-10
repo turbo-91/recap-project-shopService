@@ -3,17 +3,23 @@ package org.example;
 import lombok.With;
 
 import java.math.BigDecimal;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 @With
-public record Order(String orderId, List<OrderItem> items, BigDecimal totalPrice, orderStatus status) {
+public record Order
+        (String orderId,
+         List<OrderItem> items,
+         BigDecimal totalPrice,
+         orderStatus status,
+         ZonedDateTime orderTimestamp) {
 
     public enum orderStatus {
     PROCESSING, IN_DELIVERY, COMPLETED
     }
 
     public Order(String orderId, List<OrderItem> items) {
-        this(orderId, items, calculateTotalPrice(items), orderStatus.PROCESSING);
+        this(orderId, items, calculateTotalPrice(items), orderStatus.PROCESSING, ZonedDateTime.now());
     }
 
     private static BigDecimal calculateTotalPrice(List<OrderItem> items) {
@@ -30,29 +36,8 @@ public record Order(String orderId, List<OrderItem> items, BigDecimal totalPrice
                 "orderId='" + orderId + '\'' +
                 ", items=" + items +
                 ", totalPrice=" + totalPrice +
+                ", status=" + status +
+                ", orderTimestamp=" + orderTimestamp +
                 '}';
     }
-
-    @Override
-    public String orderId() {
-        return orderId;
-    }
-
-    @Override
-    public List<OrderItem> items() {
-        return items;
-    }
-
-    @Override
-    public BigDecimal totalPrice() {
-        return totalPrice;
-    }
-
-    @Override
-    public orderStatus status() {
-        return status;
-    }
-
-
-
 }
