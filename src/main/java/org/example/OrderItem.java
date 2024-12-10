@@ -1,7 +1,9 @@
 package org.example;
 
-import java.math.BigDecimal;
+import lombok.Builder;
 
+import java.math.BigDecimal;
+@Builder
 public class OrderItem {
     private final Product product;
     private int quantity;

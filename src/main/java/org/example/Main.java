@@ -10,6 +10,8 @@ import java.util.Optional;
 public class Main {
     public static void main(String[] args) {
         ProductRepo productRepo1 = new ProductRepo(new ArrayList<>());
+        OrderMapRepo testOrderMapRepo = new OrderMapRepo();
+        ShopService shopService1 = new ShopService(productRepo1, testOrderMapRepo);
 
         Product sneakers = Product.builder()
                 .productId("sn12")
@@ -33,9 +35,7 @@ public class Main {
                 .addProduct(mobilePhone)
                 .addProduct(plant);
 
-        OrderMapRepo testOrderMapRepo = new OrderMapRepo();
 
-        ShopService shopService1 = new ShopService(productRepo1, testOrderMapRepo);
 
 //        OrderItem item1 = new OrderItem(sneakers, 2);
 //        OrderItem item2 = new OrderItem(sneakers, 3);
